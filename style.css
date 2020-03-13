@@ -1,9 +1,9 @@
 /*!
 Theme Name: Sunipoon
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
+Theme URI: http://devkamrul.com/sunipoon/
+Author: Kamrul Hasan
+Author URI: http://devkamrul.com/
+Description: Sunipoon theme is made for Interior Degine shops. It is a responsive, gutenberg ready and highly flexible modern WordPress Theme.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -39,8 +39,28 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Infinite scroll
 # Media
 	## Captions
-	## Galleries
+    ## Galleries
+# Spinner
+# Layout
+# Media Queries
 --------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#Import Fonts before any css rules. 
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto+Slab&display=swap');
+
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+:root {
+    --font-color: #333;
+    --font-color-light: #111;
+    --contrast-color: #009688;
+    --contrast-color-2: #111;
+    --link-color: #111;
+    --hover-color: #111;
+}
+
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -76,8 +96,8 @@ body {
  */
 
 h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
+	font-size: 2.4rem;
+	margin: 1rem 0;
 }
 
 /* Grouping content
@@ -101,7 +121,7 @@ hr {
 
 pre {
 	font-family: monospace, monospace; /* 1 */
-	font-size: 1em; /* 2 */
+	/* font-size: 1em; /* 2 */
 }
 
 /* Text-level semantics
@@ -144,7 +164,7 @@ code,
 kbd,
 samp {
 	font-family: monospace, monospace; /* 1 */
-	font-size: 1em; /* 2 */
+	/*font-size: 1em; /* 2 */
 }
 
 /**
@@ -169,11 +189,11 @@ sup {
 }
 
 sub {
-	bottom: -0.25em;
+	bottom: -0.25rem;
 }
 
 sup {
-	top: -0.5em;
+	top: -0.5rem;
 }
 
 /* Embedded content
@@ -265,7 +285,7 @@ button:-moz-focusring,
  */
 
 fieldset {
-	padding: 0.35em 0.75em 0.625em;
+	padding: 0.35rem 0.75rem 0.625rem;
 }
 
 /**
@@ -389,25 +409,29 @@ template {
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+html {
+    font-size: 10px;
+}
+
 body,
 button,
 input,
 select,
 optgroup,
 textarea {
-	color: #404040;
-	font-family: sans-serif;
-	font-size: 16px;
-	font-size: 1rem;
+	color: var(--font-color);
+	font-family: 'Open Sans';
+	font-size: 1.6rem;
 	line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Slab', serif;
 	clear: both;
 }
 
 p {
-	margin-bottom: 1.5em;
+	margin-bottom: 2.4rem;
 }
 
 dfn, cite, em, i {
@@ -415,11 +439,11 @@ dfn, cite, em, i {
 }
 
 blockquote {
-	margin: 0 1.5em;
+	margin: 0 2.4rem;
 }
 
 address {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 }
 
 pre {
@@ -428,10 +452,10 @@ pre {
 	font-size: 15px;
 	font-size: 0.9375rem;
 	line-height: 1.6;
-	margin-bottom: 1.6em;
+	margin-bottom: 2.4rem;
 	max-width: 100%;
 	overflow: auto;
-	padding: 1.6em;
+	padding: 2.4rem;
 }
 
 code, kbd, tt, var {
@@ -477,11 +501,11 @@ hr {
 	background-color: #ccc;
 	border: 0;
 	height: 1px;
-	margin-bottom: 1.5em;
+	margin-bottom: 2.4rem;
 }
 
 ul, ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0 0 2.4rem 4.8rem;
 }
 
 ul {
@@ -495,7 +519,7 @@ ol {
 li > ul,
 li > ol {
 	margin-bottom: 0;
-	margin-left: 1.5em;
+	margin-left: 2.4rem;
 }
 
 dt {
@@ -503,7 +527,7 @@ dt {
 }
 
 dd {
-	margin: 0 1.5em 1.5em;
+	margin: 0 2.4rem 2.4rem;
 }
 
 img {
@@ -514,12 +538,12 @@ img {
 }
 
 figure {
-	margin: 1em 0;
+	margin: 2.4rem 0;
 	/* Extra wide images within figure tags don't overflow the content area. */
 }
 
 table {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 	width: 100%;
 }
 
@@ -536,9 +560,9 @@ input[type="submit"] {
 	background: #e6e6e6;
 	color: rgba(0, 0, 0, 0.8);
 	font-size: 12px;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	line-height: 1;
-	padding: .6em 1em .4em;
+	padding: 1rem 1.6rem 1rem;
 }
 
 button:hover,
@@ -655,12 +679,12 @@ a:hover, a:active {
 	float: left;
 	position: absolute;
 	top: 100%;
-	left: -999em;
+	left: -999rem;
 	z-index: 99999;
 }
 
 .main-navigation ul ul ul {
-	left: -999em;
+	left: -999rem;
 	top: 0;
 }
 
@@ -694,7 +718,7 @@ a:hover, a:active {
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 600px) {
 	.menu-toggle {
 		display: none;
 	}
@@ -706,7 +730,7 @@ a:hover, a:active {
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 	overflow: hidden;
 }
 
@@ -775,13 +799,13 @@ a:hover, a:active {
 .alignleft {
 	display: inline;
 	float: left;
-	margin-right: 1.5em;
+	margin-right: 2.4rem;
 }
 
 .alignright {
 	display: inline;
 	float: right;
-	margin-left: 1.5em;
+	margin-left: 2.4rem;
 }
 
 .aligncenter {
@@ -824,7 +848,7 @@ a:hover, a:active {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 	/* Make sure select elements fit in widgets. */
 }
 
@@ -844,7 +868,7 @@ a:hover, a:active {
 
 .post,
 .page {
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 }
 
 .updated:not(.published) {
@@ -854,12 +878,12 @@ a:hover, a:active {
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 1.5em 0 0;
+	margin: 2.4rem 0 0;
 }
 
 .page-links {
 	clear: both;
-	margin: 0 0 1.5em;
+	margin: 0 0 2.4rem;
 }
 
 /*--------------------------------------------------------------
@@ -916,7 +940,7 @@ object {
 ## Captions
 --------------------------------------------------------------*/
 .wp-caption {
-	margin-bottom: 1.5em;
+	margin-bottom: 2.4rem;
 	max-width: 100%;
 }
 
@@ -927,7 +951,7 @@ object {
 }
 
 .wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+	margin: 1rem 0;
 }
 
 .wp-caption-text {
@@ -938,7 +962,7 @@ object {
 ## Galleries
 --------------------------------------------------------------*/
 .gallery {
-	margin-bottom: 1.5em;
+	margin-bottom: 2.4rem;
 }
 
 .gallery-item {
