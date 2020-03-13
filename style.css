@@ -1007,3 +1007,21 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+/* On screens that are 600px or less. */
+@media screen and (max-width: 600px) {
+    .main-navigation li {
+        float: none;
+        text-align: center;
+    }
+
+    .main-navigation ul li:hover > ul,
+    .main-navigation ul li.focus > ul {
+        float: none;
+        position: initial;
+    }
+
+    .main-navigation ul ul a {
+        width: 100%;
+    }
+}
