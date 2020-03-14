@@ -1066,6 +1066,11 @@ object {
         cursor: pointer;
     }
 
+    .toggled .menu-toggle {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+
     .main-navigation li {
         float: none;
         text-align: center;

@@ -39,7 +39,7 @@
 			        ) );
 			        ?>
 
-                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'sunipoon' ); ?></button>
+                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">&#x2630;</button>
 
 		        </nav><!-- #site-navigation -->
 
