@@ -25,7 +25,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Normalize
 # Typography
 # Elements
+# Global Classes
 # Forms
+# Topbar
 # Navigation
 	## Links
 	## Menus
@@ -548,6 +550,17 @@ table {
 }
 
 /*--------------------------------------------------------------
+# Global Classes
+--------------------------------------------------------------*/
+.container {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem; 
+}
+
+/*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
 button,
@@ -629,6 +642,36 @@ select {
 
 textarea {
 	width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Topbar
+--------------------------------------------------------------*/
+.topbar {
+    position:fixed;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 1px 1px #ccc; */
+}
+
+.topbar .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-topbar {
+    height: 2rem;
+}
+
+.custom-logo {
+    height: 3rem;
+    width: auto;
+    margin-top: -.5rem;
 }
 
 /*--------------------------------------------------------------
@@ -1010,6 +1053,19 @@ object {
 
 /* On screens that are 600px or less. */
 @media screen and (max-width: 600px) {
+    .menu-toggle {
+        display: block;
+        float: right;
+        border-radius: 0;
+        background: transparent;
+        font-size: 2rem;
+        line-height: 2rem;
+        padding: 0;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
     .main-navigation li {
         float: none;
         text-align: center;
