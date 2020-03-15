@@ -657,7 +657,7 @@ textarea {
     /* box-shadow: 0px 1px 1px #ccc; */
 }
 
-.topbar .container {
+.topbar > .container {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -671,7 +671,6 @@ textarea {
 .custom-logo {
     height: 3rem;
     width: auto;
-    margin-top: -.5rem;
 }
 
 /*--------------------------------------------------------------
@@ -704,8 +703,9 @@ a:hover, a:active {
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation {
-	clear: both;
-	display: block;
+    clear: both;
+    display: block;
+	display: contents;
 	float: left;
 	width: 100%;
 }
@@ -752,7 +752,10 @@ a:hover, a:active {
 
 .main-navigation a {
 	display: block;
-	text-decoration: none;
+    text-decoration: none;
+    line-height: 2;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
 }
 
 /* Small menu. */
@@ -1069,11 +1072,58 @@ object {
     .toggled .menu-toggle {
         font-size: 3rem;
         line-height: 3rem;
+        position: absolute;
+        right: 2rem;
+        top: -4.6rem;
+    }
+
+    .toggled.main-navigation {
+        position: absolute;
+        top: 6rem;
+        left: 0;
+        right: 0;
+        /* bottom: 0; */
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .toggled.main-navigation .nav-menu {
+        padding: 2rem 0;
     }
 
     .main-navigation li {
         float: none;
         text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .main-navigation a {
+        line-height: 3;
+    }
+
+    .main-navigation ul ul {
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .main-navigation ul > li:last-child {
+        border-bottom: none;
+    }
+
+    .toggled .page_item_has_children > a::after,
+    .toggled .page_item_has_children ul .page_item_has_children > a::after {
+        content:'';
+        position: absolute;
+        top: 2rem;
+        margin-left: 1rem;
+        width: 0; 
+        height: 0; 
+        border-left: .8rem solid transparent;
+        border-right: .8rem solid transparent;
+    
+        border-top: .8rem solid var(--link-color);
     }
 
     .main-navigation ul li:hover > ul,

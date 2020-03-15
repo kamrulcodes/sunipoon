@@ -31,7 +31,7 @@
 
                 <?php the_custom_logo(); ?>
 
-                <nav id="site-navigation" class="main-navigation">			
+                <nav id="site-navigation" class="container main-navigation">			
 			        <?php
 			        wp_nav_menu( array(
 				        'theme_location' => 'menu-1',
