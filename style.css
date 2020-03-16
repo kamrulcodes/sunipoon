@@ -55,12 +55,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Variables
 --------------------------------------------------------------*/
 :root {
-    --font-color: #333;
-    --font-color-light: #111;
+    --text-color: #333;
+    --text-color-light: #111;
     --contrast-color: #009688;
     --contrast-color-2: #111;
-    --link-color: #111;
-    --hover-color: #111;
+    --link-color: royalblue;
+    --hover-color: midnightblue;
 }
 
 /*--------------------------------------------------------------
@@ -421,7 +421,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: var(--font-color);
+	color: var(--text-color);
 	font-family: 'Open Sans';
 	font-size: 1.6rem;
 	line-height: 1.5;
@@ -669,8 +669,8 @@ textarea {
 }
 
 .custom-logo {
-    height: 3rem;
-    width: auto;
+    width: 12rem;
+    height: auto;
 }
 
 /*--------------------------------------------------------------
@@ -679,16 +679,16 @@ textarea {
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
-a {
-	color: royalblue;
-}
-
+a,
 a:visited {
-	color: purple;
+	color: var(--link-color);
 }
 
-a:hover, a:focus, a:active {
-	color: midnightblue;
+a:hover, a:focus, a:active,
+.current_page_item > a,
+.current_page_parent > a,
+.current_page_ancestor > a {
+	color: var(--hover-color);
 }
 
 a:focus {
@@ -1011,7 +1011,8 @@ object {
 
 /* Make sure logo link wraps around logo image. */
 .custom-logo-link {
-	display: inline-block;
+    display: inline-block;
+    line-height: 1;
 }
 
 /*--------------------------------------------------------------
@@ -1086,16 +1087,41 @@ object {
 	display: block;
 }
 
-
+/*-------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
 
 /* On screens that are 600px or more. */
 @media screen and (min-width: 600px) {
-	.menu-toggle {
-		display: none;
+    /* .custom-logo {
+        width: 150px;
+        height: auto;
+    } */
+}
+
+/* On screens that are 768px or more. */
+@media screen and (min-width: 768px) {
+    /* .custom-logo {
+        width: 200px;
+        height: auto;
+    } */
+}
+
+/* On screens that are 1024px or more. */
+@media screen and (min-width: 1024px) {
+    /* .custom-logo {
+        width: 150px;
+        height: auto;
+    } */
+
+    /*  Menus 
+        ------ */
+    .menu-toggle {
+        display: none;
     }
 
-	.main-navigation ul {
-		display: block;
+    .main-navigation ul {
+        display: block;
     }
 
     .main-navigation li {
@@ -1103,8 +1129,19 @@ object {
         border-bottom: none;
     }
 
+    .nav-menu > li {
+        margin-left: 1.2rem;
+        margin-right: 1.2rem;
+    }
+
+    .nav-menu > li:last-child {
+        margin-right: 0;
+    }
+
     .main-navigation a {
-        line-height: 2;
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: .2rem;
     }
 
     .main-navigation ul li:hover > ul,
@@ -1118,10 +1155,12 @@ object {
     .main-navigation ul ul {
         box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
         float: left;
+        background-color: whitesmoke;
     }
 
     .main-navigation ul ul a {
         width: 200px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .main-navigation ul ul li:hover > ul,
