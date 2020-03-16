@@ -703,11 +703,8 @@ a:hover, a:active {
 ## Menus
 --------------------------------------------------------------*/
 .main-navigation {
-    clear: both;
     display: block;
-	display: contents;
-	float: left;
-	width: 100%;
+    display: contents;
 }
 
 .main-navigation ul {
@@ -718,59 +715,66 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
 	position: absolute;
 	top: 100%;
 	left: -999rem;
 	z-index: 99999;
-}
-
-.main-navigation ul ul ul {
-	left: -999rem;
-	top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	left: 100%;
-}
-
-.main-navigation ul ul a {
-	width: 200px;
-}
-
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .main-navigation li {
-	float: left;
 	position: relative;
 }
 
 .main-navigation a {
 	display: block;
     text-decoration: none;
-    line-height: 2;
+    line-height: 3;
     text-transform: uppercase;
     letter-spacing: .3rem;
 }
 
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-	display: block;
-}
-
+/* On screens that are 600px or more. */
 @media screen and (min-width: 600px) {
 	.menu-toggle {
 		display: none;
-	}
+    }
+
 	.main-navigation ul {
 		display: block;
-	}
+    }
+
+    .main-navigation li {
+        float: left;
+    }
+
+    .main-navigation a {
+        line-height: 2;
+    }
+
+    .main-navigation ul li:hover > ul,
+    .main-navigation ul li.focus > ul {
+        left: auto;
+    }
+    
+    .main-navigation ul ul {
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+        float: left;
+    }
+
+    .main-navigation ul ul a {
+        width: 200px;
+    }
+
+    .main-navigation ul ul li:hover > ul,
+    .main-navigation ul ul li.focus > ul {
+        left: 100%;
+    }
+
+    .main-navigation ul ul ul {
+        left: -999rem;
+        top: 0;
+    }
 }
 
 .site-main .comment-navigation, .site-main
@@ -1054,8 +1058,9 @@ object {
 	display: block;
 }
 
-/* On screens that are 600px or less. */
-@media screen and (max-width: 600px) {
+/* On screens that are 599px or less. */
+@media screen and (max-width: 599px) {
+
     .menu-toggle {
         display: block;
         float: right;
@@ -1069,7 +1074,7 @@ object {
         cursor: pointer;
     }
 
-    .toggled .menu-toggle {
+    .main-navigation.toggled .menu-toggle {
         font-size: 3rem;
         line-height: 3rem;
         position: absolute;
@@ -1077,7 +1082,7 @@ object {
         top: -4.6rem;
     }
 
-    .toggled.main-navigation {
+    .main-navigation.toggled {
         position: absolute;
         top: 6rem;
         left: 0;
@@ -1089,31 +1094,26 @@ object {
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .toggled.main-navigation .nav-menu {
+    .main-navigation.toggled ul {
+        display: block;
+    }
+
+    .main-navigation.toggled ul:first-child {
         padding: 2rem 0;
     }
 
     .main-navigation li {
-        float: none;
+        position: relative;
         text-align: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .main-navigation a {
-        line-height: 3;
-    }
-
-    .main-navigation ul ul {
-        box-shadow: none;
-        background-color: rgba(0, 0, 0, 0.1);
     }
 
     .main-navigation ul > li:last-child {
         border-bottom: none;
     }
 
-    .toggled .page_item_has_children > a::after,
-    .toggled .page_item_has_children ul .page_item_has_children > a::after {
+    .main-navigation.toggled .page_item_has_children > a::after,
+    .main-navigation.toggled .page_item_has_children ul .page_item_has_children > a::after {
         content:'';
         position: absolute;
         top: 2rem;
