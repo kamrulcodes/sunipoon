@@ -29,7 +29,13 @@
         <div id="topbar" class="topbar">
             <div class="container">
 
-                <?php the_custom_logo(); ?>
+                <?php
+                    if ( get_custom_logo() ){
+                        the_custom_logo();
+                    } else { ?>
+                        <img src="<?php echo get_template_directory_uri() . '/images/logo-green.png' ?>" alt="<?php bloginfo( 'name' ); ?>" class="default-logo">
+                    <?php } 
+                ?>
 
                 <nav id="site-navigation" class="container main-navigation">			
 			        <?php

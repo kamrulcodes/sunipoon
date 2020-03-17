@@ -668,7 +668,8 @@ textarea {
     height: 2rem;
 }
 
-.custom-logo {
+.custom-logo,
+.default-logo {
     width: 12rem;
     height: auto;
 }
@@ -707,12 +708,20 @@ a:hover, a:active {
     float: right;
     border-radius: 0;
     background: transparent;
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 2.6rem;
+    line-height: 1;
     padding: 0;
     border: none;
     outline: none;
     cursor: pointer;
+
+    position: relative;
+    top: -.25rem;
+    padding-left: 1rem;
+}
+
+.menu-toggle:focus {
+    outline: none;
 }
 
 .main-navigation.toggled .menu-toggle {
