@@ -33,7 +33,9 @@
                     if ( get_custom_logo() ){
                         the_custom_logo();
                     } else { ?>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="custom-logo-link">
                         <img src="<?php echo get_template_directory_uri() . '/images/logo-green.png' ?>" alt="<?php bloginfo( 'name' ); ?>" class="default-logo">
+                        </a>
                     <?php } 
                 ?>
 

@@ -15,6 +15,12 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
+            <?php
+                $t_id = get_queried_object()->term_id;
+                $term_image = get_term_meta( $t_id, 'image', true );
+                echo $term_image; // it's the url
+            ?>
+
 			<header class="page-header">
 				<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
