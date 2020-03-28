@@ -8,9 +8,10 @@ function sunipoon_category_add_image( $term ) {
 	
 	?>
 	<div class="form-field">
-		<label for="taxImage"><?php _e( 'Image', 'sunipoon' ); ?></label>
+		<label for="taxImage"><?php _e( 'Image URL:', 'sunipoon' ); ?></label>
 
-		<input type="text" name="taxImage" id="taxImage" value="Paste your media image url">
+		<input type="text" name="taxImage" id="taxImage" value="Paste your image link here...">
+        <p class="description">Upload image(2400 x 1600) using Media (Dashboard -> Media) and copy image url from there.</p>
 	</div>
 <?php
 }
@@ -28,10 +29,11 @@ function sunipoon_category_edit_image( $term ) {
 	$term_image = get_term_meta( $t_id, 'image', true ); 
 	?>
 	<tr class="form-field">
-		<th><label for="taxImage"><?php _e( 'Image', 'sunipoon' ); ?></label></th>
+		<th><label for="taxImage"><?php _e( 'Image URL:', 'sunipoon' ); ?></label></th>
 		 
 		<td>	 
-			<input type="text" name="taxImage" id="taxImage" value="<?php echo esc_attr( $term_image ) ? esc_attr( $term_image ) : 'Paste your media image url'; ?>">
+			<input type="text" name="taxImage" id="taxImage" value="<?php echo esc_attr( $term_image ) ? esc_attr( $term_image ) : 'Paste your image link here...'; ?>">
+            <p class="description">Upload image(2400 x 1600) using Media (Dashboard -> Media) and copy image url from there.</p>
 		</td>
 	</tr>
 <?php
