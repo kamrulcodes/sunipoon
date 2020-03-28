@@ -18,10 +18,10 @@
  */
 function sunipoon_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'sunipoon_custom_header_args', array(
-		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+		'width'                  => 2400,
+        'height'                 => 1600,
+        'flex-width'             => true,
 		'flex-height'            => true,
 		'wp-head-callback'       => 'sunipoon_header_style',
 	) ) );

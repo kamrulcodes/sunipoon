@@ -54,28 +54,36 @@
             </div><!-- /.container -->           
         </div><!-- /.topbar -->
 
-
-
-
-
-
-
 		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$sunipoon_description = get_bloginfo( 'description', 'display' );
-			if ( $sunipoon_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $sunipoon_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
+
+            <?php
+            if ( is_front_page() ) {
+                if ( get_header_image() ){
+                    the_header_image_tag( array( 
+                        'class' => 'header-img'
+                    ) );
+                } else { ?>
+                    <img src="<?php echo get_template_directory_uri() . '/images/jarek-ceborski-jn7uVeCdf6U-unsplash.jpg' ?>" alt="<?php bloginfo( 'name' ); ?>" class="header-img">
+                <?php } 
+            } ?>
+
+            <div class="tagline">
+    			<?php
+    			if ( is_front_page() && is_home() ) :
+    				?>
+    				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+    				<?php
+    			else :
+    				?>
+    				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+    				<?php
+    			endif;
+    			$sunipoon_description = get_bloginfo( 'description', 'display' );
+    			if ( $sunipoon_description || is_customize_preview() ) :
+    				?>
+    				<p class="site-description"><?php echo $sunipoon_description; /* WPCS: xss ok. */ ?></p>
+                <?php endif; ?>
+            </div><!-- .tagline -->
 		</div><!-- .site-branding -->
 
 	</header><!-- #masthead -->

@@ -30,7 +30,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Topbar
 # Navigation
 	## Links
-	## Menus
+    ## Menus
+# Branding
 # Accessibility
 # Alignments
 # Clearings
@@ -837,6 +838,61 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
+# Branding
+--------------------------------------------------------------*/
+.site-branding, .branding {
+    height: 100vh;
+    /* overflow: hidden; */
+    position: relative;
+    z-index: -10;
+}
+
+.site-branding img, .branding img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.tagline {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;    
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.300);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+.site-title {
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1.1;
+    text-align: center;
+    margin-top: -4rem;
+    margin-bottom: 1rem;
+}
+
+.site-title a {
+    text-decoration: none;
+}
+
+.site-description {
+    color: white;
+    margin: 0 auto;
+    font-weight: 700;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+/*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
@@ -1110,6 +1166,10 @@ object {
 
 /* On screens that are 768px or more. */
 @media screen and (min-width: 768px) {
+    .site-description {
+        letter-spacing: 3px;
+        font-size: 2.2rem;
+    }
     /* .custom-logo {
         width: 200px;
         height: auto;
