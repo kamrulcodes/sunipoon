@@ -656,6 +656,7 @@ textarea {
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     /* box-shadow: 0px 1px 1px #ccc; */
+    z-index: 15;
 }
 
 .topbar > .container {
@@ -844,7 +845,7 @@ a:hover, a:active {
     height: 100vh;
     /* overflow: hidden; */
     position: relative;
-    z-index: -10;
+    /* z-index: -10; */
 }
 
 .site-branding img, .branding img {
@@ -869,7 +870,8 @@ a:hover, a:active {
     padding-right: 2.5rem;
 }
 
-.site-title {
+.site-title,
+.category-title {
     font-family: 'Roboto Slab', serif;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -881,11 +883,13 @@ a:hover, a:active {
     margin-bottom: 1rem;
 }
 
-.site-title a {
+.site-title a,
+.category-title a {
     text-decoration: none;
 }
 
-.site-description {
+.site-description,
+.category-description p {
     color: white;
     margin: 0 auto;
     font-weight: 700;
