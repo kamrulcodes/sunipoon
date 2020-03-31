@@ -14,6 +14,11 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
+    <?php if(!empty (get_theme_mod('custom_footer_logo'))) : ?>    
+        <img src="<?php echo get_theme_mod( 'custom_footer_logo' ); ?>" alt="logo" />
+    <?php endif; ?>
+    
+    
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'sunipoon' ) ); ?>">
 				<?php
