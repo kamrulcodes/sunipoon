@@ -12,22 +12,41 @@
  */
 function sunipoon_customize_register( $wp_customize ) {
 
+    //file input sanitization function
+    function sunipoon_sanitize_file( $file, $setting ) {
+          
+        //allowed file types
+        $mimes = array(
+            'jpg|jpeg|jpe' => 'image/jpeg',
+            'gif'          => 'image/gif',
+            'png'          => 'image/png'
+        );
+          
+        //check file type from file name
+        $file_ext = wp_check_filetype( $file, $mimes );
+          
+        //if file has a valid mime type return it, otherwise return default
+        return ( $file_ext['ext'] ? $file : $setting->default );
+    }
+
     $wp_customize->add_setting(
         'custom_footer_logo', array(
             'type' => 'theme_mod', // or 'option'
             'capability' => 'edit_theme_options',
-            'default' => '',
+            'default' => get_theme_mod( 'custom_footer_logo' ),
             'transport' => 'refresh', // or postMessage
-            // 'sanitize_callback' => '',
+            'sanitize_callback' => 'sunipoon_sanitize_file',
             // 'sanitize_js_callback' => '', // Basically to_json.;
         )
     );
     
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'custom_footer_logo', array(
-       'label' => __( 'Footer Logo' ),
+       'label' => __( 'Footer Logo', 'sunipoon' ),
        'description' => esc_html__( 'You may add a custom footer logo with contrasting color' ),
        'section' => 'title_tagline',
        'priority' => 9, // Optional. Order priority to load the control. Default: 10
+       'settings' => 'custom_footer_logo',
+       'mime_type' => 'image',
        'button_labels' => array( // Optional.
             'select' => __( 'Select Footer Image' ),
             'change' => __( 'Change Footer Image' ),
