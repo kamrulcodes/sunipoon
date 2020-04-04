@@ -45,6 +45,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     ## Galleries
 # Spinner
 # Layout
+# Footer
 # Media Queries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -550,6 +551,10 @@ table {
 	width: 100%;
 }
 
+th, td {
+    text-align: center;
+}
+
 /*--------------------------------------------------------------
 # Global Classes
 --------------------------------------------------------------*/
@@ -1015,7 +1020,7 @@ a:hover, a:active {
 
 .post,
 .page {
-	margin: 0 0 2.4rem;
+	/* margin: 0 0 2.4rem; */
 }
 
 .updated:not(.published) {
@@ -1157,6 +1162,55 @@ object {
 }
 
 /*-------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+footer.site-footer {
+    color: #fff;
+    background: #2d2d2d;
+    padding-top: 4.8rem;
+    /* margin-top: 4.8rem; */
+}
+footer.site-footer a,
+footer.site-footer a:visited {
+    color: burlywood;
+    text-decoration: none;    
+    cursor: pointer;
+}
+footer.site-footer a:hover,
+footer.site-footer a:focus,
+footer.site-footer a:active {
+    text-decoration: underline;
+}
+#footer-logo {
+    width: 50%;
+}
+footer.site-footer .site-info {
+    font-size: 1.2rem;
+    text-align: center;
+    background: #252525;
+    color: white;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.site-info .copyright {
+    display: block;
+}
+footer.site-footer .widget {
+	margin: 0 0 4.8rem;
+	/* Make sure select elements fit in widgets. */
+}
+footer.site-footer .widget-title {
+    text-align: center;
+}
+.footer-widgets {
+    display: grid;
+    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-column-gap: 3.2rem;
+    grid-row-gap: 4.8rem;
+}
+
+/*-------------------------------------------------------------
 # Media Queries
 --------------------------------------------------------------*/
 
@@ -1178,6 +1232,14 @@ object {
         width: 200px;
         height: auto;
     } */
+
+    footer.site-footer .site-info {
+        text-align: right;
+    }
+    
+    .site-info .copyright {
+        float: left;
+    }
 }
 
 /* On screens that are 1024px or more. */
