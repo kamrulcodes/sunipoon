@@ -15,14 +15,28 @@
 
 	<footer id="colophon" class="site-footer">
     
-    <?php if ( is_active_sidebar( 'footer-sidebar-1' ) || !empty (get_theme_mod('custom_footer_logo')) ) { ?>
-        <section id="footer-widgets" class="footer-widgets container">
-            <div id="footer-logo" class="widget footer-logo">
+    <section id="footer-widgets" class="footer-widgets container">
+    <?php if ( !empty (get_theme_mod('custom_footer_logo')) || is_active_sidebar( 'footer-sidebar-1' ) ) { ?>
+        <div class="widget-area fw-1">
+            <div id="footer-logo" class="footer-logo">
                 <img src="<?php echo get_theme_mod( 'custom_footer_logo' ); ?>" alt="logo">
             </div>
             <?php dynamic_sidebar( 'footer-sidebar-1' ); ?>
-        </section>
+        </div>
+    <?php } if ( is_active_sidebar( 'footer-sidebar-2' ) ) { ?>
+        <div class="widget-area fw-2">
+            <?php dynamic_sidebar( 'footer-sidebar-2' ); ?>
+        </div>
+    <?php } if ( is_active_sidebar( 'footer-sidebar-3' ) ) { ?>
+        <div class="widget-area fw-3">
+            <?php dynamic_sidebar( 'footer-sidebar-3' ); ?>
+        </div>
+    <?php } if ( is_active_sidebar( 'footer-sidebar-4' ) ) { ?>
+        <div class="widget-area fw-4">
+            <?php dynamic_sidebar( 'footer-sidebar-4' ); ?>
+        </div>
     <?php } ?>
+    </section>
 
 		<section class="site-info">
             <div class="container">

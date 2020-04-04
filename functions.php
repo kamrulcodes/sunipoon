@@ -118,8 +118,38 @@ function sunipoon_widgets_init()
     ));
 
     register_sidebar( array(
-        'name'          => __( 'Footer Widget Area', 'sunipoon' ),
+        'name'          => __( 'Footer Widget Area 1', 'sunipoon' ),
         'id'            => 'footer-sidebar-1',
+        'description'   => __( 'Widgets in this area will be shown on the footer.', 'sunipoon' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget Area 2', 'sunipoon' ),
+        'id'            => 'footer-sidebar-2',
+        'description'   => __( 'Widgets in this area will be shown on the footer.', 'sunipoon' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget Area 3', 'sunipoon' ),
+        'id'            => 'footer-sidebar-3',
+        'description'   => __( 'Widgets in this area will be shown on the footer.', 'sunipoon' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget Area 4', 'sunipoon' ),
+        'id'            => 'footer-sidebar-4',
         'description'   => __( 'Widgets in this area will be shown on the footer.', 'sunipoon' ),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
