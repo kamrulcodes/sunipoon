@@ -22,6 +22,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
+# Font Import
+# Variables
 # Normalize
 # Typography
 # Elements
@@ -38,7 +40,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Widgets
 # Content
 	## Posts and pages
-	## Comments
+    ## Comments
 # Infinite scroll
 # Media
 	## Captions
@@ -49,7 +51,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Media Queries
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-#Import Fonts before any css rules. 
+# Font Import - before any css rules. 
 --------------------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Roboto+Slab&display=swap');
 
@@ -58,11 +60,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 --------------------------------------------------------------*/
 :root {
     --text-color: #333;
-    --text-color-light: #111;
+    --text-color-light: #444;
     --contrast-color: #009688;
     --contrast-color-2: #111;
-    --link-color: royalblue;
-    --hover-color: midnightblue;
+    --link-color: #009688;
+    --hover-color: #007662;
+    --link-color-footer: #deb887;
+    --hover-color-footer: #c9a06a;
 }
 
 /*--------------------------------------------------------------
@@ -431,11 +435,15 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto Slab', serif;
+    margin-top: 0;
 	clear: both;
 }
 
 p {
 	margin-bottom: 2.4rem;
+}
+p:last-child {
+    margin-bottom: 0;
 }
 
 dfn, cite, em, i {
@@ -513,7 +521,17 @@ ul, ol {
 }
 
 ul {
-	list-style: disc;
+    list-style: none; /* Remove default bullets */
+}
+  
+ul li::before {
+    content: "\27A5";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    /* color: var(--hover-color); /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+    margin-right: 1rem;
 }
 
 ol {
@@ -687,16 +705,34 @@ textarea {
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
+.main-navigation a,
+.main-navigation a:visited {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus,
+.main-navigation a:active,
+.main-navigation .current_page_item > a,
+.main-navigation .current_page_parent > a,
+.main-navigation .current_page_ancestor > a {
+    color: var(--text-color-light);
+    text-decoration: underline;
+}
+
 a,
 a:visited {
-	color: var(--link-color);
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 a:hover, a:focus, a:active,
 .current_page_item > a,
 .current_page_parent > a,
 .current_page_ancestor > a {
-	color: var(--hover-color);
+    color: var(--hover-color);
+    text-decoration: underline;
 }
 
 a:focus {
@@ -777,6 +813,11 @@ a:hover, a:active {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.main-navigation li::before {
+    content: '';
+    display: none;
+}
+
 .main-navigation ul > li:last-child {
     border-bottom: none;
 }
@@ -818,31 +859,34 @@ a:hover, a:active {
     border-left: .8rem solid transparent;
     border-right: .8rem solid transparent;
 
-    border-top: .8rem solid var(--link-color);
+    border-top: .8rem solid var(--text-color);
 }
 
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
-	margin: 0 0 2.4rem;
+	margin: 0 0 4.8rem;
 	overflow: hidden;
 }
 
-.comment-navigation .nav-previous,
+/* .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
-	float: left;
-	width: 50%;
+    padding-bottom: 1.2rem;
+} */
+
+
+.comment-navigation .nav-previous::before,
+.posts-navigation .nav-previous::before,
+.post-navigation .nav-previous::before {
+    content: 'Previous Post: ';
 }
 
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
+.comment-navigation .nav-next::before,
+.posts-navigation .nav-next::before,
+.post-navigation .nav-next::before {
+    content: 'Next Post: ';
 }
-
 /*--------------------------------------------------------------
 # Branding
 --------------------------------------------------------------*/
@@ -866,7 +910,7 @@ a:hover, a:active {
     right: 0;
     bottom: 0;    
     z-index: 10;
-    background-color: rgba(255, 255, 255, 0.300);
+    background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -891,6 +935,7 @@ a:hover, a:active {
 .site-title a,
 .category-title a {
     text-decoration: none;
+    color: white;
 }
 
 .site-description,
@@ -899,6 +944,7 @@ a:hover, a:active {
     margin: 0 auto;
     font-weight: 700;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -1000,7 +1046,7 @@ a:hover, a:active {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-	margin: 0 0 2.4rem;
+	/* margin: 0 0 2.4rem; */
 	/* Make sure select elements fit in widgets. */
 }
 
@@ -1008,16 +1054,119 @@ a:hover, a:active {
 	max-width: 100%;
 }
 
+.widget-title {
+    margin-top: 0;
+}
+.widget ul,
+.widget ol {
+    margin: 0;
+    padding-left: 2rem;
+}
+.widget li {
+    padding-bottom: 1rem;
+}
+.widget li:last-child {
+    padding-bottom: 0;
+}
+.widget .search-form {
+    display: flex;
+    overflow: hidden;
+}
+.widget .search-field {
+    margin-right: 1rem;
+    width: 98%;
+}
+.widget .search-form label {
+    flex: 1 1 auto;    /*    flex-grow, flex-shrink, flex-basis    */
+}
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+#content {
+    padding-top: 7.2rem;
+    padding-bottom: 7.2rem;
+}
+#content h1, #content h2, #content h3 {
+    color: var(--text-color-light);
+}
+h1.entry-title {
+    line-height: 1;
+    margin-top: -8px;
+}
+.single .entry-content h2, .single .entry-content h3,
+.page .entry-content h2, .page .entry-content h3 {
+    line-height: 1;
+    margin: 4.8rem 0 2.4rem;
+}
+.sticky .entry-title {
+    width: calc(100% - 40px);
+}
+article.post,
+article.page,
+.comments-area {
+    padding-bottom: 7.2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 7.2rem;
+}
+.single article.post{
+    margin-bottom: 2.4rem;
+}
+.post .entry-content ul, .page .entry-content ul,
+.post .entry-content ol, .page .entry-content ol {
+    margin-left: 0;
+    padding-left: 0;
+}
+.post .entry-content ul li, .page .entry-content ul li,
+.post .entry-content ol li, .page .entry-content ol li {
+    margin: 0 0 2.4rem 4.8rem;
+}
+.entry-footer span {
+    display: block;
+}
+.entry-footer .edit-link {
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: .3rem;
+}
+.entry-footer .post-edit-link {
+    border: 1px solid var(--link-color);
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+.comment-respond {
+    max-width: 480px; 
+}
+#secondary {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(240px, 1fr));
+    grid-gap: 4.8rem;
+}
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
 .sticky {
-	display: block;
+    display: block;
+    position: relative;
 }
-
+.sticky::after {
+    content: 'Pined';
+    height: 3rem;
+    width: 3rem;
+    top: 0;
+    right: 0;
+    background-image: url('/wp-content/themes/sunipoon/images/sticky-post.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: 1;
+    position: absolute;
+    text-align: center;
+    line-height: 8;
+    color: var(--link-color-footer);
+    font-size: 1rem;
+    font-weight: bold;
+}
 .post,
 .page {
 	/* margin: 0 0 2.4rem; */
@@ -1030,7 +1179,7 @@ a:hover, a:active {
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 2.4rem 0 0;
+	margin: 2.4rem 0;
 }
 
 .page-links {
@@ -1041,6 +1190,43 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
+.comments-title{
+    margin-bottom: 4.8rem;
+}
+.comment-list {
+    padding-left: 4.8rem;
+    margin-left: 0;
+    list-style: none;
+}
+.comment {
+    margin-bottom: 4.8rem;
+}
+.comment-author {
+    margin-left: -4.8rem;
+    display: flex;
+}
+.comment-author .avatar {
+    width: 4.8rem;
+    margin-right: 1rem;
+}
+b.fn {
+    padding-right: 1rem;
+}
+.comment-metadata {
+    margin-top: -2rem;
+    margin-left: 1rem;
+}
+.comment-metadata a {
+    color: var(--text-color-light);
+}
+.comment-list .children {
+    margin: 2.4rem 0 0 2.4rem;
+}
+.comment-content,
+.comment-awaiting-moderation,
+.comment-reply-link {
+    margin-left: 1rem;
+}
 .comment-content a {
 	word-wrap: break-word;
 }
@@ -1167,18 +1353,19 @@ object {
 footer.site-footer {
     color: #fff;
     background: #2d2d2d;
-    padding-top: 4.8rem;
+    padding-top: 7.2rem;
     /* margin-top: 4.8rem; */
 }
 footer.site-footer a,
 footer.site-footer a:visited {
-    color: burlywood;
+    color: var(--link-color-footer);
     text-decoration: none;    
     cursor: pointer;
 }
 footer.site-footer a:hover,
 footer.site-footer a:focus,
 footer.site-footer a:active {
+    color: var(--hover-color-footer);
     text-decoration: underline;
 }
 #footer-logo {
@@ -1205,8 +1392,8 @@ footer.site-footer .widget-title {
 .footer-widgets {
     display: grid;
     align-items: start;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-column-gap: 3.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-column-gap: 4.8rem;
     grid-row-gap: 4.8rem;
 }
 
@@ -1224,19 +1411,42 @@ footer.site-footer .widget-title {
 
 /* On screens that are 768px or more. */
 @media screen and (min-width: 768px) {
+    .sticky .entry-title {
+        width: calc(100% - 100px);
+    }
+    .sticky::after {
+        content: 'Pined / Sticky';
+        height: 9rem;
+        width: 9rem;
+        background-position: top center;
+        background-size: initial;
+        line-height: 15;
+    }
+    h1 {
+        font-size: 7.2rem;
+    }
     .site-description {
         letter-spacing: 3px;
         font-size: 2.2rem;
     }
-    /* .custom-logo {
-        width: 200px;
-        height: auto;
-    } */
-
-    footer.site-footer .site-info {
-        text-align: right;
+    .comment-navigation .nav-previous,
+    .posts-navigation .nav-previous,
+    .post-navigation .nav-previous {
+        float: left;
+        width: 50%;
+        padding-bottom: 0;
     }
     
+    .comment-navigation .nav-next,
+    .posts-navigation .nav-next,
+    .post-navigation .nav-next {
+        float: right;
+        text-align: right;
+        width: 50%;
+    }
+    footer.site-footer .site-info {
+        text-align: right;
+    }    
     .site-info .copyright {
         float: left;
     }
@@ -1248,7 +1458,24 @@ footer.site-footer .widget-title {
         width: 150px;
         height: auto;
     } */
-
+    article.page,
+    .comments-area {
+        padding-bottom: 7.2rem;
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+    #content .container {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        grid-column-gap: 4.8rem;
+        grid-row-gap: 4.8rem;
+    }
+    #secondary {
+        display: block;
+    }
+    #secondary .widget {
+        margin-bottom: 4.8rem;
+    }
     /*  Menus 
         ------ */
     .menu-toggle {

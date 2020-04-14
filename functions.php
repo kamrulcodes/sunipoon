@@ -16,7 +16,7 @@ if (!function_exists('sunipoon_setup')):
      * as indicating support for post thumbnails.
      */
     function sunipoon_setup()
-{
+    {
         /*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
