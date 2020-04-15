@@ -1464,7 +1464,8 @@ footer.site-footer .widget-title {
         border-bottom: none;
         margin-bottom: 0;
     }
-    #content .container {
+    body:not(.post-template-full-width-single):not(.page-template-full-width-single):not(.post-template-full-width-no-hero):not(.page-template-full-width-no-hero)
+     #content .container {
         display: grid;
         grid-template-columns: 7fr 3fr;
         grid-column-gap: 4.8rem;
