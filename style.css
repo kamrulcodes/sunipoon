@@ -39,7 +39,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Clearings
 # Widgets
 # Content
-	## Posts and pages
+    ## Posts and pages
+    ## blocks
     ## Comments
 # Infinite scroll
 # Media
@@ -506,7 +507,8 @@ html {
 
 body {
 	background: #fff;
-	/* Fallback for when there is no custom background color defined. */
+    /* Fallback for when there is no custom background color defined. */
+    overflow-x: hidden;
 }
 
 hr {
@@ -1185,6 +1187,20 @@ article.page,
 .page-links {
 	clear: both;
 	margin: 0 0 2.4rem;
+}
+
+/*--------------------------------------------------------------
+## blocks
+--------------------------------------------------------------*/
+.alignfull {
+    width: 100vw;
+    max-width: 100vw;
+    /* works down to IE9 and Android 4.4 */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
 
 /*--------------------------------------------------------------

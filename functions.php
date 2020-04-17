@@ -80,6 +80,10 @@ if (!function_exists('sunipoon_setup')):
             'flex-width' => true,
             'flex-height' => true,
         ));
+
+        add_theme_support( 'wp-block-styles' );
+        add_theme_support( 'align-wide' );
+        add_theme_support( 'alignfull' );
     }
 endif;
 add_action('after_setup_theme', 'sunipoon_setup');
