@@ -108,6 +108,7 @@
     			endif; ?>
             </div><!-- .tagline -->
 		</div><!-- .site-branding -->
+<?php if (has_excerpt()) {the_excerpt();} ; ?>
 
 	</header><!-- #masthead -->
 

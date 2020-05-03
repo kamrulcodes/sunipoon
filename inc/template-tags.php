@@ -62,14 +62,14 @@ if ( ! function_exists( 'sunipoon_entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', 'sunipoon' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'sunipoon' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links"><strong>Posted in:</strong>' . esc_html__( ' %1$s', 'sunipoon' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 			}
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'sunipoon' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'sunipoon' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links"><strong>Tagged:</strong>' . esc_html__( ' %1$s', 'sunipoon' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 			}
 		}
 

@@ -4,7 +4,7 @@ Theme URI: http://devkamrul.com/sunipoon/
 Author: Kamrul Hasan
 Author URI: http://devkamrul.com/
 Description: Sunipoon theme is made for Interior Degine shops. It is a responsive, gutenberg ready and highly flexible modern WordPress Theme.
-Version: 1.0.0
+Version: 1.0.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: sunipoon
@@ -436,12 +436,12 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto Slab', serif;
-    margin-top: 0;
-	clear: both;
+    margin: 0 0 2.4rem 0;
+    clear: both;
 }
 
 p {
-	margin-bottom: 2.4rem;
+	margin: 0 0 2.4rem;
 }
 p:last-child {
     margin-bottom: 0;
@@ -451,10 +451,34 @@ dfn, cite, em, i {
 	font-style: italic;
 }
 
-blockquote {
-	margin: 0 2.4rem;
+blockquote:not(.wp-block-quote):not(.wp-block-pullquote) {
+    margin: 0 2.4rem;
+    border-left: 4px solid #000;
+    padding: 0 2.4rem 4.8rem;
 }
-
+blockquote:not(.wp-block-quote):not(.wp-block-pullquote) + p {
+    position: relative;
+    margin-top: -2.4rem;
+    padding: 0 4.8rem 2.4rem 5.2rem;
+}
+.wp-block-pullquote blockquote {
+    border-left: none !important;
+    padding: 0 !important;
+}
+.wp-block-quote p, .wp-block-pullquote p {
+    margin-bottom: 1.6rem;
+}
+.wp-block-embed {
+    width: 100%;
+}
+/* .wp-block-embed-facebook span {
+    width: 100% !important;
+    height: auto !important;
+}
+.wp-block-embed-facebook span iframe {
+    width: 100% !important;
+    height: 100% !important;
+}*/
 address {
 	margin: 0 0 2.4rem;
 }
@@ -474,7 +498,7 @@ pre {
 code, kbd, tt, var {
 	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 	font-size: 15px;
-	font-size: 0.9375rem;
+    font-size: 1.2rem;
 }
 
 abbr, acronym {
@@ -525,8 +549,7 @@ ul, ol {
 ul {
     list-style: none; /* Remove default bullets */
 }
-  
-ul li::before {
+ul > li::before {
     content: "\27A5";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
     /* color: var(--hover-color); /* Change the color */
     font-weight: bold; /* If you want it to be bold */
@@ -534,8 +557,13 @@ ul li::before {
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
     margin-right: 1rem;
+    float: left;
 }
-
+ul > li.blocks-gallery-image::before,
+ul > li.blocks-gallery-item::before {
+    content: '';
+    display: none;
+}
 ol {
 	list-style: decimal;
 }
@@ -558,21 +586,25 @@ img {
 	height: auto;
 	/* Make sure images are scaled correctly. */
 	max-width: 100%;
-	/* Adhere to container width. */
+    /* Adhere to container width. */
 }
 
 figure {
-	margin: 2.4rem 0;
+	margin: 0 0 2.4rem 0;
 	/* Extra wide images within figure tags don't overflow the content area. */
 }
 
-table {
+table, .wp-block-table table {
 	margin: 0 0 2.4rem;
-	width: 100%;
+    width: 100%;
+    border: 1px solid #fff;
+    background-color: #ddd;
 }
 
-th, td {
+th, td, .wp-block-table th, .wp-block-table td {
     text-align: center;
+    border: 1px solid #fff;
+    background-color: #fff;
 }
 
 /*--------------------------------------------------------------
@@ -677,7 +709,7 @@ textarea {
     position:fixed;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 6rem;
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     /* box-shadow: 0px 1px 1px #ccc; */
@@ -699,6 +731,7 @@ textarea {
 .default-logo {
     width: 12rem;
     height: auto;
+    margin: auto;
 }
 
 /*--------------------------------------------------------------
@@ -897,6 +930,7 @@ a:hover, a:active {
     /* overflow: hidden; */
     position: relative;
     /* z-index: -10; */
+    margin-bottom: 7.2rem;
 }
 
 .site-branding img, .branding img {
@@ -1012,7 +1046,8 @@ a:hover, a:active {
 	clear: both;
 	display: block;
 	margin-left: auto;
-	margin-right: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 /*--------------------------------------------------------------
@@ -1085,16 +1120,28 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+#masthead {
+    min-height: 6rem;
+}
 #content {
-    padding-top: 7.2rem;
+    /* padding-top: 7.2rem; */
     padding-bottom: 7.2rem;
+}
+#primary {
+    overflow: hidden;
 }
 #content h1, #content h2, #content h3 {
     color: var(--text-color-light);
 }
 h1.entry-title {
     line-height: 1;
-    margin-top: -8px;
+    /* margin-top: -8px; */
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+.entry-meta {
+    margin: -2rem 0 2.4rem;
+    text-align: left;
 }
 .single .entry-content h2, .single .entry-content h3,
 .page .entry-content h2, .page .entry-content h3 {
@@ -1119,9 +1166,24 @@ article.page,
     margin-left: 0;
     padding-left: 0;
 }
-.post .entry-content ul li, .page .entry-content ul li,
-.post .entry-content ol li, .page .entry-content ol li {
-    margin: 0 0 2.4rem 4.8rem;
+.entry-content ul li:not(.blocks-gallery-image):not(.blocks-gallery-item),
+.entry-content ol li:not(.blocks-gallery-image):not(.blocks-gallery-item) {
+    margin: 0 0 1.2rem 4.8rem;
+}
+.entry-content li:not(.blocks-gallery-image):not(.blocks-gallery-item) ul li,
+.entry-content li:not(.blocks-gallery-image):not(.blocks-gallery-item) ol li {
+    margin: 0 0 1.2rem 2.4rem;
+}
+.entry-content li:not(.blocks-gallery-image):not(.blocks-gallery-item):first-child {
+    margin-top: 1.2rem;
+}
+li.wp-block-rss__item,
+ul.wp-block-latest-posts li,
+ul.wp-block-archives li {
+    margin-left: 2.4rem !important;
+}
+li.wp-block-latest-comments__comment {
+    margin-left: 0 !important;
 }
 .entry-footer span {
     display: block;
@@ -1138,6 +1200,16 @@ article.page,
 }
 .comment-respond {
     max-width: 480px; 
+}
+.blocks-gallery-grid .blocks-gallery-image figcaption,
+.blocks-gallery-grid .blocks-gallery-item figcaption,
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
+    padding-top: 0;
+}
+.cat-links,
+.tags-links {
+    margin-bottom: 1.2rem;
 }
 #secondary {
     display: grid;
@@ -1169,10 +1241,10 @@ article.page,
     font-size: 1rem;
     font-weight: bold;
 }
-.post,
+/* .post,
 .page {
-	/* margin: 0 0 2.4rem; */
-}
+	margin: 0 0 2.4rem;
+} */
 
 .updated:not(.published) {
 	display: none;
@@ -1181,7 +1253,7 @@ article.page,
 .page-content,
 .entry-content,
 .entry-summary {
-	margin: 2.4rem 0;
+	margin: 0 0 2.4rem 0;
 }
 
 .page-links {
@@ -1192,7 +1264,14 @@ article.page,
 /*--------------------------------------------------------------
 ## blocks
 --------------------------------------------------------------*/
-.alignfull {
+.wp-block-image {
+    margin-top: 4.8rem;
+    margin-bottom: 4.8rem;
+}
+.post-template-full-width-single .alignfull,
+.page-template-full-width-single .alignfull,
+.post-template-full-width-no-hero .alignfull,
+.page-template-full-width-no-hero .alignfull {
     width: 100vw;
     max-width: 100vw;
     /* works down to IE9 and Android 4.4 */
@@ -1203,6 +1282,21 @@ article.page,
     margin-right: -50vw;
 }
 
+.wp-block-button {
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+.wp-block-button:not(.is-style-outline) a {
+    box-shadow: inset 0 0 99999px rgba(0, 0, 0, 0.5);
+}
+.wp-block-button:not(.is-style-outline) a:hover, .wp-block-button:not(.is-style-outline) a:active {
+    text-decoration: none;
+    box-shadow: inset 0 0 99999px rgba(0, 0, 0, 0.3);
+}
+
+.wp-block-cover {
+    margin-bottom: 4.8rem;
+}
 /*--------------------------------------------------------------
 ## Comments
 --------------------------------------------------------------*/
@@ -1210,12 +1304,16 @@ article.page,
     margin-bottom: 4.8rem;
 }
 .comment-list {
-    padding-left: 4.8rem;
+    padding-left: 0;
     margin-left: 0;
     list-style: none;
 }
 .comment {
     margin-bottom: 4.8rem;
+}
+.comment-meta {
+    margin-left: 6rem;
+    margin-bottom: 1.6rem;
 }
 .comment-author {
     margin-left: -4.8rem;
@@ -1235,8 +1333,13 @@ b.fn {
 .comment-metadata a {
     color: var(--text-color-light);
 }
+.comment-list ul, .comment-list ol {
+    margin-left: 0;
+}
 .comment-list .children {
     margin: 2.4rem 0 0 2.4rem;
+    list-style: none;
+    margin-left: 0;
 }
 .comment-content,
 .comment-awaiting-moderation,
@@ -1249,6 +1352,11 @@ b.fn {
 
 .bypostauthor {
 	display: block;
+}
+
+.trackback, .pingback {
+    /* margin-left: -4.8rem; */
+    margin-bottom: 3.2rem;
 }
 
 /*--------------------------------------------------------------
@@ -1282,7 +1390,7 @@ b.fn {
 embed,
 iframe,
 object {
-	max-width: 100%;
+    width: 100%;
 }
 
 /* Make sure logo link wraps around logo image. */
@@ -1386,6 +1494,7 @@ footer.site-footer a:active {
 }
 #footer-logo {
     width: 50%;
+    margin-bottom: 2.4rem;
 }
 footer.site-footer .site-info {
     font-size: 1.2rem;
@@ -1441,6 +1550,12 @@ footer.site-footer .widget-title {
     h1 {
         font-size: 7.2rem;
     }
+    h1 sup {
+        top: -1.8rem;
+    }
+    h1.entry-title {
+        margin-top: -8px;
+    }
     .site-description {
         letter-spacing: 3px;
         font-size: 2.2rem;
@@ -1465,6 +1580,14 @@ footer.site-footer .widget-title {
     }    
     .site-info .copyright {
         float: left;
+    }    
+    li.wp-block-rss__item,
+    ul.wp-block-latest-posts li,
+    ul.wp-block-archives li {
+        margin-left: 4.8rem !important;
+    }
+    li.wp-block-latest-comments__comment {
+        margin-left: 4.8rem !important;
     }
 }
 
@@ -1550,5 +1673,13 @@ footer.site-footer .widget-title {
     .main-navigation ul ul ul {
         left: -999rem;
         top: 0;
+    }
+
+    .comment-list {
+        padding-left: 4.8rem;
+    }
+
+    .comment-meta {
+        margin-left: 0;
     }
 }
